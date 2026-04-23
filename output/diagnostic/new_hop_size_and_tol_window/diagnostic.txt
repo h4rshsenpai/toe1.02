@@ -1,0 +1,14 @@
+=== Diagnostic Report ===
+Total windows analyzed: 704
+
+--- Temporal Smearing (BPM) ---
+Median BPM: 111.1
+  Below median (BPM <= 111.1):  N=  384  Macro F1 = 0.880
+  Above median (BPM  > 111.1):  N=  320  Macro F1 = 0.937
+  F1 delta = +0.057  → NOT SUPPORTED
+
+--- Spectral Masking (Polyphony) ---
+Median polyphony: 0.6
+  Below median (polyphony <= 0.6):  N=  361  Macro F1 = 0.886
+  Above median (polyphony  > 0.6):  N=  343  Macro F1 = 0.927
+  F1 delta = +0.041  → NOT SUPPORTED

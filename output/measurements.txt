@@ -1,0 +1,53 @@
+evaluate.py
+
+Class           Precision     Recall         F1
+────────────────────────────────────────────────
+Kick                0.946      0.999      0.972
+Snare               0.878      0.989      0.930
+Hi-Hat              0.919      0.983      0.950
+────────────────────────────────────────────────
+Macro avg           0.914      0.990      0.951
+
+diagnostic.py
+
+=== Diagnostic Report ===
+Total windows analyzed: 704
+
+--- Temporal Smearing (BPM) ---
+Median BPM: 111.1
+  Below median (BPM <= 111.1):  N=  384  Macro F1 = 0.909
+  Above median (BPM  > 111.1):  N=  320  Macro F1 = 0.959
+  F1 delta = +0.050  → NOT SUPPORTED
+
+--- Spectral Masking (Polyphony) ---
+Median polyphony: 0.6
+  Below median (polyphony <= 0.6):  N=  361  Macro F1 = 0.910
+  Above median (polyphony  > 0.6):  N=  343  Macro F1 = 0.954
+  F1 delta = +0.043  → NOT SUPPORTED
+
+Saved: /Users/xrisk/dev/toe/output/diagnostic/f1_vs_bpm.png
+Saved: /Users/xrisk/dev/toe/output/diagnostic/f1_vs_polyphony.png
+
+---------------------------------
+
+# ANALYSIS
+
+1. Temporal smearing in the mel-spectrogram. The CNN operates at HOP=512
+frames (~11.6 ms resolution). At high BPM, 16th-note intervals shrink
+(e.g., at 200 BPM a 16th note is ~75 ms — only ~6 frames). Adjacent onsets
+  begin to overlap in the spectrogram's time axis, making the model's
+context window see a blurred combined activation rather than two distinct
+peaks.
+
+2. The 50 ms inter-onset suppression (_MIN_GAP). At very high BPM with
+fast hi-hat patterns (e.g., 240 BPM = 16th notes every ~62.5 ms), the
+suppression window actively swallows legitimate onsets, hard-capping
+recall regardless of model quality.
+
+Whether this actually shows up in the IDMT-SMT-Drums V2 data depends on
+what BPM range the dataset covers and how strong the effect is relative to
+  other noise sources. That's exactly what the scatter plot will reveal —
+if the hypothesis holds you'd see F1 trending downward as BPM increases,
+and the console report would print SUPPORTED for the temporal smearing
+section.
+

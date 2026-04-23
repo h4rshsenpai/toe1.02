@@ -1,0 +1,12 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python main\\.py --help$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "test": true,
+        "true": true,
+        "git add": true,
+        "git commit": true
+    }
+}
