@@ -68,7 +68,6 @@ The evaluation harness now collapses `HH`, `CHH`, and `OHH` into one hi-hat buck
 - `quantize.py`: Beat This! beat tracking and 16th-note quantization logic (not currently invoked by `main.py`).
 - `render.py`: PDF notation generation from quantized hits (not currently invoked by `main.py`).
 
-See `DECISIONS.md` for rationale and reactivation notes.
 
 ## Dependencies
 
@@ -79,7 +78,3 @@ See `DECISIONS.md` for rationale and reactivation notes.
 - **[pretty-midi](https://github.com/craffel/pretty-midi)** — MIDI I/O
 - **[matplotlib](https://matplotlib.org/)** — Visualization
 - **[mir-eval](https://craffel.github.io/mir_eval/)** — Evaluation metrics
-
-## License
-
-[Your license here]
