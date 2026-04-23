@@ -1,0 +1,23 @@
+[project]
+name = "toe"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beat-this",
+    "demucs>=4.0.1",
+    "einops>=0.8.2",
+    "librosa>=0.11.0",
+    "matplotlib>=3.10.8",
+    "mir-eval>=0.8.2",
+    "pretty-midi>=0.2.11",
+    "rotary-embedding-torch>=0.8.9",
+    "torchcodec>=0.11.0",
+    "yt-dlp>=2026.3.17",
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+]
+
+[tool.uv.sources]
+beat-this = { url = "https://github.com/CPJKU/beat_this/archive/main.zip" }
